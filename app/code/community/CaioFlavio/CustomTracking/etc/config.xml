@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <CaioFlavio_CustomTracking>
+            <version>0.0.1</version>
+        </CaioFlavio_CustomTracking>
+    </modules>
+    <global> 
+    	<helpers>
+            <custom_tracking>
+                <class>CaioFlavio_CustomTracking_Helper</class>
+            </custom_tracking>
+        </helpers>        
+        <blocks>
+            <custom_tracking>
+                <class>CaioFlavio_CustomTracking_Block</class>
+            </custom_tracking>
+        </blocks>      
+        <models>
+            <custom_tracking>
+                <class>CaioFlavio_CustomTracking_Model</class>
+            </custom_tracking>
+        </models>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <caioflavio_customtracking module="CaioFlavio_CustomTracking">
+                    <file>customtracking.xml</file>
+                </caioflavio_customtracking>
+            </updates>
+        </layout> 
+        <routers>
+            <customtracking>
+                <use>standard</use>
+                <args>
+                    <module>CaioFlavio_CustomTracking</module>
+                    <frontName>rastreamento-de-pedido</frontName>
+                </args>
+            </customtracking>
+        </routers>
+    </frontend>
+    <default>
+        <customtracking>
+            <correios>
+                <url>http://webservice.correios.com.br/service/rastro/Rastro.wsdl</url>
+                <type>L</type>
+                <result>T</result>
+                <language>101</language>
+                <timeout>3</timeout>
+                <message_notfound>
+                    O sistema dos correios ainda não possui dados sobre o objeto informado. Por favor tente, novamente, mais tarde. O objeto foi postado recentemente, é possível que seus eventos não tenham ingressado no banco de dados.
+                </message_notfound>
+            </correios>
+        </customtracking>
+    </default>
+</config>

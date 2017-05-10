@@ -1,0 +1,41 @@
+<?php $trackingData = $this->getObjectArray($this->getOrderId()); ?>
+<div class="row">
+	<div class="col-md-10">
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<?php foreach($trackingData as $trackingCode => $trackingObjects): 
+						$trackData = $this->getTrackingInfo($trackingCode); ?>
+						<tr>
+							<td>Codigo de rastreio: <?php echo $trackingCode ?> </td>
+							<?php if(!is_null($trackData)): ?> 
+								<td><?php echo $this->getTrackingType($trackData) ?></td>
+							<?php endif; ?>
+						</tr>
+					<?php 
+						if(!is_null($trackData)): 
+							foreach($trackData as $trackInfo): ?>
+								<tr>
+									<td>
+										<?php echo $trackInfo->from->date ?><br>
+										<?php echo $trackInfo->from->hour ?><br>
+										<?php echo $trackInfo->from->local ?>
+									</td>
+									<td>
+										<?php echo $trackInfo->description ?><br>
+										<?php echo $trackInfo->from->local ?><br>
+										<?php if(!is_null($trackInfo->to->agency)): ?>
+											para <?php echo $trackInfo->to->local ?><br>
+										<?php endif; ?>
+									</td>
+								</tr>
+							<?php endforeach; ?> 
+						<?php else: ?>
+							<tr>
+								<td> <?php echo $this->getNotFoundMessage(); ?></td>
+							</tr>
+						<?php endif ;?>
+				<?php endforeach;?>
+			</table>
+		</div>
+	</div>
+</div>

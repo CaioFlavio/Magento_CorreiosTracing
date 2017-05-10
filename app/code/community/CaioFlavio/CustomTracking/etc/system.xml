@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <caioflavio>
+            <label>CaioFlavio Extensions</label>
+            <sort_order>100</sort_order>
+        </caioflavio>
+    </tabs>
+    <sections>
+        <customtracking>
+            <label>Rastreio de Pedidos</label>
+            <tab>caioflavio</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <correios>
+                    <label>Correios</label>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <url>
+                            <label>URL Da Webservice:</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Url da webservice forcenida pelos correios.</comment>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </url>
+                        <user>
+                            <label>Usuario:</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Usuário fornecido pelos correios.</comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </user>
+                        <password>
+                            <label>Senha:</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Senha fornecida pelos correios.</comment>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                              
+                        </password>
+                        <type>
+                            <label>Tipo:</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>L: lista de objetos ou F: intervalo de objetos.</comment>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </type>
+                        <result>
+                            <label>Resultado:</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>T: Todos os eventos ou U: Ultimo evento.</comment>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </result>
+                        <language>
+                            <label>Língua:</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>101: Português ou 102: Inglês.</comment>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </language>
+                        <message_notfound>
+                            <label>Messagem:</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Messagem de erro caso o objeto ainda não tenha sido registrado na base de dado dos correios.</comment>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                              
+                        </message_notfound>
+                        <timeout>
+                            <label>Tempo máximo de resposta da webservice:</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Em segundos</comment>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>  
+                        </timeout>
+                    </fields>
+                </correios>
+            </groups>
+        </customtracking>
+    </sections>
+</config>
