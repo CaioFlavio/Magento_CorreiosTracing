@@ -48,9 +48,15 @@
                 <result>T</result>
                 <language>101</language>
                 <timeout>3</timeout>
-                <message_notfound>
+                <notfound_error>
                     O sistema dos correios ainda não possui dados sobre o objeto informado. Por favor tente, novamente, mais tarde. O objeto foi postado recentemente, é possível que seus eventos não tenham ingressado no banco de dados.
-                </message_notfound>
+                </notfound_error>
+                <ws_error>
+                    O serviço dos correios apresenta instabilidade no momento, por favor tente mais tarde.
+                </ws_error>
+                <internal_error>
+                    Erro interno ao processar o rastreio, por favor entre em contate conosco ou tente mais tarde.
+                </internal_error>
             </correios>
         </customtracking>
     </default>
