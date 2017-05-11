@@ -32,5 +32,9 @@
 # Caso precise de ajuda
 ##### Caso precise de ajuda pode ficar a vontade em abrir uma issue ou me enviar uma mensagem ou enviar um email para caioflavio2@hotmail.com.br explicando seu problema.
 
+# Changelog
+#### 0.0.1 Base do modulo funcionando.
+#### 0.0.2 Adicionado tratamento de erros internos e/ou de conexão com a webservice.
+
   
 
