@@ -68,24 +68,42 @@
                             <sort_order>60</sort_order>
                             <show_in_default>1</show_in_default>
                         </language>
-                        <message_notfound>
-                            <label>Messagem:</label>
-                            <frontend_type>text</frontend_type>
-                            <comment>Messagem de erro caso o objeto ainda não tenha sido registrado na base de dado dos correios.</comment>
-                            <sort_order>70</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>                              
-                        </message_notfound>
                         <timeout>
                             <label>Tempo máximo de resposta da webservice:</label>
                             <frontend_type>text</frontend_type>
                             <comment>Em segundos</comment>
-                            <sort_order>80</sort_order>
+                            <sort_order>70</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>  
                         </timeout>
+                        <notfound_error>
+                            <label>Msg. Objeto Não Registrado:</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Messagem de erro caso o objeto ainda não tenha sido registrado na base de dado dos correios.</comment>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                              
+                        </notfound_error>
+                        <ws_error>
+                            <label>Msg. Erro conexão com a webservice:</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Messagem de erro caso haja falha na conexão com a webservice.</comment>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                              
+                        </ws_error>
+                        <internal_error>
+                            <label>Msg. Erro interno:</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Messagem de erro caso haja algum erro interno na requisição.</comment>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                              
+                        </internal_error>
                     </fields>
                 </correios>
             </groups>

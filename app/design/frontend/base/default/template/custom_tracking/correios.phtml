@@ -7,12 +7,12 @@
 						$trackData = $this->getTrackingInfo($trackingCode); ?>
 						<tr>
 							<td>Codigo de rastreio: <?php echo $trackingCode ?> </td>
-							<?php if(!is_null($trackData)): ?> 
+							<?php if(!is_null($trackData) && !$trackData->error): ?> 
 								<td><?php echo $this->getTrackingType($trackData) ?></td>
 							<?php endif; ?>
 						</tr>
 					<?php 
-						if(!is_null($trackData)): 
+						if(!is_null($trackData) && !$trackData->error): 
 							foreach($trackData as $trackInfo): ?>
 								<tr>
 									<td>
@@ -29,10 +29,14 @@
 									</td>
 								</tr>
 							<?php endforeach; ?> 
+						<?php elseif($trackData->errorType): ?>
+							<tr>
+								<td> <?php echo $this->getNotFoundMessage($trackData->errorType, $trackData->errorMessage); ?></td>
+							</tr>		
 						<?php else: ?>
 							<tr>
 								<td> <?php echo $this->getNotFoundMessage(); ?></td>
-							</tr>
+							</tr>						
 						<?php endif ;?>
 				<?php endforeach;?>
 			</table>

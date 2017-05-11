@@ -68,22 +68,29 @@ Class CaioFlavio_CustomTracking_Model_Correios extends Mage_Core_Model_Abstract{
 
 		/*
 			Os parametros abaixo são necessários para aumentar a velocidade de resposta da webservice.
+			SoapFault => Lida com os problemas de conexão com a webservice.
+			Obs: Apesar de na teoria como SoapFault extende Exception, quando SoapFault "throw an excpetion" Exception deveria "catch", mas isso não acontece,
+			portanto é necessário usar os dois catchs para lidar de forma correta com os erros.
 		*/
 		try {
 			$this->soapClient =  new SoapClient($this->webserviceUrl, 
 				array(
-					'connection_timeout' => $this->connectionTimeout,					 
+					'connection_timeout' => $this->connectionTimeout,				
 					'cache_wsdl' 		 => WSDL_CACHE_BOTH,	
 				)
-			); 			
-		} catch (Exception $e) {
-			return $e->getMessage();
+			); 				
+		}catch(SoapFault $e){
+			$this->soapConnectionError = true; 
+		} 
+		catch (Exception $e){
+			$this->soapConnectionError = true;
 		}
 
 	}
 
 	public function requestObject($objectCode){
-		$params = array(
+		if(!$this->soapConnectionError){
+			$soapResquestParams = array(
 		        'usuario'   => $this->webserviceUser,
 		        'senha'     => $this->webservicePass,
 		        'tipo'      => $this->webserviceType,
@@ -91,9 +98,20 @@ Class CaioFlavio_CustomTracking_Model_Correios extends Mage_Core_Model_Abstract{
 		        'lingua'    => $this->webserviceLanguage,
 		        'objetos'   => trim($objectCode)
 			);
-		$this->request = $this->soapClient->buscaEventos($params);
-
-		return $this->request->return->objeto;
+			try {
+				$this->request = $this->soapClient->buscaEventos($soapResquestParams);
+				$response = $this->request->return->objeto;
+			} catch (SoapFault $e) {
+				$response = (object) array('error' => true, 'errorType' => 'connection', 'error_message' => $e->getMessage());
+			} catch (Exception $e) {
+				$response = (object) array('error' => true, 'errorType' => 'execution', 'error_message' => $e->getMessage());
+			} finally {
+				return $response;
+			}
+			return (object) array('error' => true, 'errorType' => 'fallback');
+		}else{
+			return (object) array('error' => true, 'errorType' => 'connection');
+		}
 	}
 
 	protected function getShipmentItems($itemsCollection){
